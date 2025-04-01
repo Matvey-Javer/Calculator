@@ -8,11 +8,6 @@ public class Test {
     private static String secondValue;
     private static String secondSymbol;
 
-    private static final Object lock1 = new Object();
-    private static final Object lock2 = new Object();
-    private static final Object lock3 = new Object();
-    private static final Object lock4 = new Object();
-
 
     private static List<String> firstValues = new ArrayList<>();
     private static List<String> firstSymbols = new ArrayList<>();
@@ -28,36 +23,29 @@ public class Test {
             Thread thread1 = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    synchronized (lock1) {
-                        AddElementsInLists.addingForFirstList(firstValue, scanner, firstValues);
-                    }
+                    AddElementsInLists.addingForFirstList(firstValue, scanner, firstValues);
                 }
             });
 
             Thread thread2 = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    synchronized (lock2) {
-                        AddElementsInLists.addingForFirstList(firstSymbol, scanner, firstSymbols);
-                    }
+                    AddElementsInLists.addingForFirstList(firstSymbol, scanner, firstSymbols);
                 }
             });
             Thread thread3 = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    synchronized (lock3) {
-                        AddElementsInLists.addingForFirstList(secondValue, scanner, secondValues);
-                    }
+                    AddElementsInLists.addingForFirstList(secondValue, scanner, secondValues);
                 }
             });
 
             Thread thread4 = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    synchronized (lock4) {
-                        AddElementsInLists.addingForFirstList(secondSymbol, scanner, secondSymbols);
-                    }
-                }});
+                    AddElementsInLists.addingForFirstList(secondSymbol, scanner, secondSymbols);
+                }
+            });
 
             thread1.start();
             thread2.start();
