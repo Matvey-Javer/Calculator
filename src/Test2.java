@@ -8,16 +8,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Test2 {
+    private static Scanner scanner1 = new Scanner(System.in);
+    private static Scanner scanner2 = new Scanner(System.in);
+    private static Scanner scanner3 = new Scanner(System.in);
+    private static Scanner scanner4 = new Scanner(System.in);
+
     private static String firstValue;
     private static String firstSymbol;
     private static String secondValue;
     private static String secondSymbol;
-
-    private static final Object lock1 = new Object();
-    private static final Object lock2 = new Object();
-    private static final Object lock3 = new Object();
-    private static final Object lock4 = new Object();
-
 
     private static List<String> firstValues = new ArrayList<>();
     private static List<String> firstSymbols = new ArrayList<>();
@@ -26,20 +25,23 @@ public class Test2 {
 
 
     public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        List<String> result = new ArrayList<>();
-        ExecutorService es = Executors.newFixedThreadPool(1);
+        ExecutorService es = Executors.newFixedThreadPool(4);
         es.submit(new Runnable() {
             @Override
             public void run() {
-                while (!firstValue.equals("=")) {
-                    firstValue = scanner.nextLine();
-                    result.add(firstValue);
+                while (!firstSymbol.equals("=")) {
+                    AddElementsInLists.addingForFirstList(firstValue, scanner1, firstValues);
+                    AddElementsInLists.addingForSymbolsList1(firstSymbol, scanner2, firstSymbols);
+                    AddElementsInLists.addingForSecondList(secondValue, scanner3, secondValues);
+                    AddElementsInLists.addingForSymbolsList2(secondSymbol, scanner4, secondSymbols);
                 }
             }
         });
         es.shutdown();
         es.awaitTermination(1, TimeUnit.DAYS);
         System.out.println(firstValues);
+        System.out.println(firstSymbols);
+        System.out.println(secondValues);
+        System.out.println(secondSymbols);
     }
 }
