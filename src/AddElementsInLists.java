@@ -8,24 +8,21 @@ public class AddElementsInLists {
     private static final Object lock3 = new Object();
 
 
-    public static void addingForFirstList(String double1, Scanner scanner1, List<String> firstValues) {
+    public static void addingForFirstList(Scanner scanner1, List<String> firstValues) {
         synchronized (lock1) {
-            double1 = scanner1.nextLine();
-            firstValues.add(double1);
+            firstValues.add(scanner1.nextLine());
         }
     }
 
-    public static void addingForSymbolsList1(String symbol, Scanner scanner2, List<String> symbols) {
+    public static void addingForSymbolsList1(Scanner scanner2, List<String> symbols) {
          synchronized (lock2) {
-            symbol = scanner2.nextLine();
-            symbols.add(symbol);
+            symbols.add(scanner2.nextLine());
          }
     }
 
-    public static void addingForSecondList(String double2, Scanner scanner3, List<String> secondValues) {
+    public static void addingForSecondList(Scanner scanner3, List<String> secondValues) {
          synchronized (lock3) {
-            double2 = scanner3.nextLine();
-            secondValues.add(double2);
+            secondValues.add(scanner3.nextLine());
         }
     }
 }
