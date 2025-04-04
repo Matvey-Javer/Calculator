@@ -6,34 +6,27 @@ public class AddElementsInLists {
     private static final Object lock1 = new Object();
     private static final Object lock2 = new Object();
     private static final Object lock3 = new Object();
-    private static final Object lock4 = new Object();
 
 
-    public static void addingForFirstList(String firstValue, Scanner scanner1, List<String> firstValues) {
+    public static void addingForFirstList(String double1, Scanner scanner1, List<String> firstValues) {
         synchronized (lock1) {
-            firstValue = scanner1.nextLine();
-            firstValues.add(firstValue);
+            double1 = scanner1.nextLine();
+            firstValues.add(double1);
         }
     }
 
-    public static void addingForSymbolsList1(String firstSymbol, Scanner scanner2, List<String> firstSymbols) {
+    public static void addingForSymbolsList1(String symbol, Scanner scanner2, List<String> symbols) {
          synchronized (lock2) {
-            firstSymbol = scanner2.nextLine();
-            firstSymbols.add(firstSymbol);
+            symbol = scanner2.nextLine();
+            symbols.add(symbol);
          }
     }
 
-    public static void addingForSecondList(String secondValue, Scanner scanner3, List<String> secondValues) {
+    public static void addingForSecondList(String double2, Scanner scanner3, List<String> secondValues) {
          synchronized (lock3) {
-            secondValue = scanner3.nextLine();
-            secondValues.add(secondValue);
-        }
-    }
-
-    public static void addingForSymbolsList2(String secondSymbol, Scanner scanner4, List<String> secondSymbols) {
-          synchronized (lock4) {
-            secondSymbol = scanner4.nextLine();
-            secondSymbols.add(secondSymbol);
+            double2 = scanner3.nextLine();
+            secondValues.add(double2);
         }
     }
 }
+// допустим все работает как нужно, и теперь эти методы заполняют листы, т.е на выходе у меня готовые листы.
