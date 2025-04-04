@@ -17,9 +17,8 @@ public class Test {
 
 
     public static void main(String[] args) throws InterruptedException, NullPointerException {
-        // покумекай над условием выхода из бесконечнонр цикла
         while(true) {
-            if (!scanner1.nextLine().equals("=") | !scanner2.nextLine().equals("=") | scanner3.nextLine().equals("=")){
+            if (scanner1.nextLine().equals("=") | scanner2.nextLine().equals("=") | scanner3.nextLine().equals("=")){
                 System.out.println(firstValues);
                 System.out.println(symbols);
                 System.out.println(secondValues);
@@ -42,8 +41,5 @@ public class Test {
                 thread3.join();
             }
         }
-//        System.out.println(firstValues);
-//        System.out.println(symbols);
-//        System.out.println(secondValues);
     }
 }
