@@ -44,21 +44,4 @@ public class FileManager {
         }
         return values;
     }
-
-    public static void main(String[] args) {
-        double res = 0;
-        double value = 0;
-        inputInFile(new Scanner(System.in));
-        List<String> strings = putInList();
-        for (int i = 0; i < strings.size(); i++) {
-            if (i % 3 == 0) {
-                value = Double.parseDouble(strings.get(i));
-            } else {
-                String symbol = strings.get(i);
-                res = Calculate.workOperation(value, symbol); // придумай какое значение
-            }
-        }
-        System.out.println(res);
-    }
 }
-// заведи 3 листа, и когда пользователь введет =, то производи операции
