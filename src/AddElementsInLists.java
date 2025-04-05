@@ -1,29 +1,22 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 public class AddElementsInLists {
+    private static volatile boolean runner = true;
 
-    private static final Object lock1 = new Object();
-    private static final Object lock2 = new Object();
-    private static final Object lock3 = new Object();
-
-
-    public static void addingForFirstList(Scanner scanner1, List<String> firstValues) {
-        synchronized (lock1) {
-            firstValues.add(scanner1.nextLine());
+    private static void addingForList(BlockingQueue<String> queue, List<String> list, String name) {
+        while (!queue.isEmpty() | runner) {
+            try {
+                String value = queue.poll(100, TimeUnit.MILLISECONDS);
+                if (value == null || value.equals("STOP")) continue;
+                list.add(value);
+                System.out.println("[" + name + "] Added: " + value); // подумай, нужно  ли тебе это выводить?
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
 
-    public static void addingForSymbolsList1(Scanner scanner2, List<String> symbols) {
-         synchronized (lock2) {
-            symbols.add(scanner2.nextLine());
-         }
-    }
-
-    public static void addingForSecondList(Scanner scanner3, List<String> secondValues) {
-         synchronized (lock3) {
-            secondValues.add(scanner3.nextLine());
-        }
     }
 }
-// допустим все работает как нужно, и теперь эти методы заполняют листы, т.е на выходе у меня готовые листы.
