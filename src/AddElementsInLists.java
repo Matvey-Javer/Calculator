@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class AddElementsInLists {
     private static volatile boolean runner = true;
+    private static Double result = (double) 0;
 
     private static final BlockingQueue<String> q1 = new LinkedBlockingQueue<>();
     private static final BlockingQueue<String> q2 = new LinkedBlockingQueue<>();
@@ -65,9 +66,12 @@ public class AddElementsInLists {
         // тут я заканчиваю, и получается что у меня есть 3 листа стрингов
         List<Double> doubles1 = Calculate.converter(firstValues);
         List<Double> doubles2 = Calculate.converter(secondValues); // здесь выкидываются 2 исключения минимум, намбэр формат и нул поинтер
-        System.out.println("First Values: " + doubles1);
-        System.out.println("Symbols      : " + symbols);
-        System.out.println("Second Values: " + doubles2);
+
+        Calculate.operation(doubles1, symbols, doubles2, result);
+        System.out.println(result);
+//        System.out.println("First Values: " + doubles1);
+//        System.out.println("Symbols      : " + symbols);
+//        System.out.println("Second Values: " + doubles2);
     }
 
 
