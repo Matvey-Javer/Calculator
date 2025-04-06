@@ -27,11 +27,11 @@ public class Test {
             }else {
 
 
-                Thread thread1 = new Thread(() -> AddElementsInLists.addingForFirstList(double1, scanner1, firstValues));
+                Thread thread1 = new Thread(() -> AddElementsInLists.addingForFirstList( scanner1, firstValues));
 
-                Thread thread2 = new Thread(() -> AddElementsInLists.addingForSymbolsList1(symbol, scanner2, symbols));
+                Thread thread2 = new Thread(() -> AddElementsInLists.addingForSymbolsList1(scanner2, symbols));
 
-                Thread thread3 = new Thread(() -> AddElementsInLists.addingForSecondList(double2, scanner3, secondValues));
+                Thread thread3 = new Thread(() -> AddElementsInLists.addingForSecondList(scanner3, secondValues));
 
                 thread1.start();
                 thread2.start();

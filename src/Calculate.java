@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Calculate{
     public static List<Double> converter(List<String> list){
-        List<Double> doubleList = new ArrayList<>();
+         List<Double> doubleList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             doubleList.add(Double.parseDouble(list.get(i)));
         }
