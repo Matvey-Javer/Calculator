@@ -25,12 +25,12 @@ public class Calculate{
 
     }
 
-    public static Double operation(List<Double> doubles1, List<String> symbols, List<Double> doubles2, Double result){
+    public static Double operation(List<Double> doubles, List<String> symbols, Double result){
         for (int i = 0; i < symbols.size(); i++) {
             if (symbols.get(i).equals("+")){
-                result = doubles1.get(i) + doubles2.get(i);
+                result = result + doubles.get(i);
             }else {
-                result = doubles1.get(i) - doubles2.get(i);
+                result = result - doubles.get(i);
             }
         }
         return result;
