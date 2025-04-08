@@ -57,8 +57,7 @@ public class AddElementsInLists {
 
         // тут я заканчиваю, и получается что у меня есть 3 листа стрингов
         List<Double> doubles = Calculate.converter(values);  // здесь выкидываются 2 исключения минимум, намбэр формат и нул поинтер
-
-         Calculate.operation(doubles, symbols,  result);
+         result = Calculate.operation(doubles, symbols,  result);
          System.out.println(result);
 //        System.out.println("Values: " + doubles);
 //        System.out.println("Symbols      : " + symbols);

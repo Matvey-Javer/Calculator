@@ -26,9 +26,9 @@ public class Calculate{
     }
 
     public static Double operation(List<Double> doubles, List<String> symbols, Double result){
-        for (int i = 0; i < symbols.size(); i++) {
+        for (int i = 1; i < symbols.size(); i++) {
             if (symbols.get(i).equals("+")){
-                result = result + doubles.get(i);
+                result = doubles.get(i - 1) + doubles.get(i);
             }else {
                 result = result - doubles.get(i);
             }
