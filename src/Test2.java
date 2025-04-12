@@ -55,9 +55,27 @@ public class Test2 {
         workerS.join();
         worker2.join();
 
-        System.out.println("First Values: " + firstValues);
-        System.out.println("Symbols     : " + symbols);
-        System.out.println("Second Values: " + secondValues);
+        List<Double> doubles1 = new ArrayList<>();
+        List<Double> doubles2 = new ArrayList<>();
+        doubles1 = Calculate.converter(firstValues);
+        doubles2 = Calculate.converter(secondValues);
+
+        Double a = 0.0;
+        Double b = 0.0;
+        Double result = 0.0;
+
+        for (int i = 0; i < doubles1.size(); i++) {
+             a = doubles1.get(i);
+            for (int j = 0; j < doubles2.size(); j++) {
+                 b = doubles2.get(j);
+            }
+            if (symbols.get(i).equals("+")){
+                result = Calculate.addition(a, b);
+            } else if (symbols.get(i).equals("-")) {
+                result = Calculate.subtraction(a, b);
+            }
+        }
+        System.out.println(result);
     }
 
     private static void process(BlockingQueue<String> queue, List<String> list, String name) {

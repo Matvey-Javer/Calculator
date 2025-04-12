@@ -27,20 +27,21 @@ public class Calculate {
         return a / b;
     }
 
-    public static Double operation(List<Double> doubles, List<String> symbols) {
-        Double result = 0.0;
-        for (int j = 1; j < doubles.size(); j++) {
-            switch (symbols.get(j - 1)) {
-                case "+" -> result = addition(doubles.get(j - 1), doubles.get(j));
-                case "-" -> result = subtraction(doubles.get(j - 1), doubles.get(j));
-                case "*" -> result = multiplication(doubles.get(j - 1), doubles.get(j));
-                case "/" -> result = division(doubles.get(j - 1), doubles.get(j));
+    public static Double operation(List<Double> doubles, List<String> symbols, Double result) {
+        for (int i = 0; i < doubles.size(); i++) {
+            if (symbols.get(i).equals("+")) {
+                return result + doubles.get(i);
+            } else if (symbols.get(i).equals("-")) {
+                return result - doubles.get(i);
+            } else if (symbols.get(i).equals("*")) {
+                return result * doubles.get(i);
+            } else if (symbols.get(i).equals("/")) {
+                return result / doubles.get(i);
             }
-        }
-        return result;
+        }return result;
     }
 
-  /*  public static void main(String[] args) {
+    public static void main(String[] args) {
         Double result = 0.0;
         List<Double> doubles = new ArrayList<>();
         doubles.add(33.0);
@@ -53,5 +54,5 @@ public class Calculate {
         symbols.add("+");
         symbols.add("-");
         System.out.println(operation(doubles, symbols, result));
-    }*/
+    }
 }

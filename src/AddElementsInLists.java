@@ -56,7 +56,7 @@ public class AddElementsInLists {
 
 
         List<Double> doubles = Calculate.converter(values);  // здесь выкидываются 2 исключения минимум, намбэр формат и нул поинтер
-         result = Calculate.operation(doubles, symbols);
+         result = Calculate.operation(doubles, symbols, result);
          System.out.println(result);
     }
 
