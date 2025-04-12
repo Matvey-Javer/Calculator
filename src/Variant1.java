@@ -1,45 +1,47 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+// первое это подумай про () и прочее в калькуляторе.
+// второе это подумай про то, как игнорировать white-space символы, которые могут встречатся при вводе и прочее
+
 public class Variant1 {
     public static void main(String[] args) {
-        List<String> list1 = new ArrayList<>();
-        List<String> list2 = new ArrayList<>();
-        List<String> list3 = new ArrayList<>();
-
+        Double result = 0.0;
+        List<Double> doubles = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        String a = "";
-        String b = "";
-        String c = "";
-
-        /*while (true){
-            a = scanner.nextLine();
-            if (a.equals("=")){
-                break;
-            }
-            aList.add(a);
-        }*/
-        addingAList(scanner, a, b, c,  list1, list2, list3);
-        System.out.println(list1);
-        System.out.println(list2);
-        System.out.println(list3);
-
+        String line = scanner.nextLine();
+        String[] symbols = line.split("[0-9]+");
+        String[] strings = line.split("(\\+|-|\\*|/|=)");
+        System.out.println(Arrays.toString(symbols));
+        System.out.println(Arrays.toString(strings));
+        doubles = converter(strings);
+        System.out.println(doubles);
+        result = operation(symbols, doubles, result);
+        System.out.println(result);
     }
 
-    public static void addingAList(Scanner scanner, String a, String b, String c, List<String> list1,
-                                   List<String> list2, List<String> list3) {
-        while (true) {
-            a = scanner.nextLine();
-            b = scanner.nextLine();
-            c = scanner.nextLine();
-
-            if (!a.equals("=") | !b.equals("=") | !c.equals("=") ) {
-                break;
-            }
-            list1.add(a);
-            list2.add(b);
-            list3.add(c);
+    public static List<Double> converter(String[] strings) {
+        List<Double> doubles = new ArrayList<>();
+        for (String string : strings) {
+            doubles.add(Double.parseDouble(string));
         }
+        return doubles;
+    }
+
+    public static Double operation(String[] symbols, List<Double> doubles, Double result) {
+        for (int i = 0; i < symbols.length; i++) {
+            if (symbols[i].equals("+")) {
+                result = result + doubles.get(i);
+            } else if (symbols[i].equals("-")) {
+                result = result + doubles.get(i);
+            } else if (symbols[i].equals("*")) {
+                result = result * doubles.get(i);
+            } else if (symbols[i].equals("/")) {
+                result = result / doubles.get(i);
+            }
+        }
+        return result;
     }
 }
