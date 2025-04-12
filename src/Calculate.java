@@ -40,7 +40,7 @@ public class Calculate {
         return result;
     }
 
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         Double result = 0.0;
         List<Double> doubles = new ArrayList<>();
         doubles.add(33.0);
@@ -53,5 +53,5 @@ public class Calculate {
         symbols.add("+");
         symbols.add("-");
         System.out.println(operation(doubles, symbols, result));
-    }
+    }*/
 }

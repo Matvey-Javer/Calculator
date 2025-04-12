@@ -55,12 +55,9 @@ public class AddElementsInLists {
         }
 
 
-        // тут я заканчиваю, и получается что у меня есть 3 листа стрингов
         List<Double> doubles = Calculate.converter(values);  // здесь выкидываются 2 исключения минимум, намбэр формат и нул поинтер
-         result = Calculate.operation(doubles, symbols,  result);
+         result = Calculate.operation(doubles, symbols);
          System.out.println(result);
-//        System.out.println("Values: " + doubles);
-//        System.out.println("Symbols      : " + symbols);
     }
 
 
@@ -70,9 +67,9 @@ public class AddElementsInLists {
                 String value = queue.poll(100, TimeUnit.MILLISECONDS);
                 if (value == null || value.equals("STOP")) continue;
                 list.add(value);
-                System.out.println("[" + name + "] Added: " + value); // подумай, нужно  ли тебе это выводить?
+                System.out.println("[" + name + "] Added: " + value);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt(); // ?
+                Thread.currentThread().interrupt();
             }
         }
     }
