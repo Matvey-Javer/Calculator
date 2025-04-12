@@ -42,6 +42,7 @@ public class AddElementsInLists {
         Thread thread1 = new Thread(() -> addingForList(q1, values, "Values"));
         Thread thread2 = new Thread(() -> addingForList(q2, symbols, "Symbol"));
 
+
         reader.start();
         thread1.start();
         thread2.start();
@@ -56,7 +57,7 @@ public class AddElementsInLists {
 
 
         List<Double> doubles = Calculate.converter(values);  // здесь выкидываются 2 исключения минимум, намбэр формат и нул поинтер
-         result = Calculate.operation(doubles, symbols, result);
+         //result = Calculate.operation(doubles, symbols, result);
          System.out.println(result);
     }
 

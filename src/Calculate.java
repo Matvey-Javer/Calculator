@@ -27,32 +27,38 @@ public class Calculate {
         return a / b;
     }
 
-    public static Double operation(List<Double> doubles, List<String> symbols, Double result) {
-        for (int i = 0; i < doubles.size(); i++) {
-            if (symbols.get(i).equals("+")) {
-                return result + doubles.get(i);
-            } else if (symbols.get(i).equals("-")) {
-                return result - doubles.get(i);
-            } else if (symbols.get(i).equals("*")) {
-                return result * doubles.get(i);
-            } else if (symbols.get(i).equals("/")) {
-                return result / doubles.get(i);
+    public static Double operation(List<Double> doubles1, List<Double> doubles2, List<String> symbols, Double result) {
+        Double a = 0.0;
+        Double b = 0.0;
+        for (int i = 0; i < doubles1.size(); i++) {
+            a = doubles1.get(i);
+            for (int j = 0; j < doubles2.size(); j++) {
+                b = doubles2.get(j);
+                if (symbols.get(i).equals("+")) {
+                    result = Calculate.addition(a, b);
+                } else if (symbols.get(i).equals("-")) {
+                    result = Calculate.subtraction(a, b);
+                }
             }
-        }return result;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
         Double result = 0.0;
         List<Double> doubles = new ArrayList<>();
+        List<Double> doubles2 = new ArrayList<>();
         doubles.add(33.0);
-        doubles.add(17.0);
+        doubles2.add(17.0);
         doubles.add(50.0);
+        doubles2.add(50.0);
         doubles.add(50.0);
 
         List<String> symbols = new ArrayList<>();
         symbols.add("+");
         symbols.add("+");
         symbols.add("-");
-        System.out.println(operation(doubles, symbols, result));
+        symbols.add("-");
+        System.out.println(operation(doubles, doubles2, symbols, result));
     }
 }
