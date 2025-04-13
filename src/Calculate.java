@@ -36,7 +36,7 @@ public class Calculate {
             Double result;
 
             switch (op) {
-                case "+" -> result = addition(a, b);
+              case "+" -> result = addition(a, b);
                 case "-" -> result = subtraction(a, b);
                 case "*" -> result = multiplication(a, b);
                 case "/" -> result = division(a, b);

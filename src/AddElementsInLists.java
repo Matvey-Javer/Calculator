@@ -16,7 +16,7 @@ public class AddElementsInLists {
     private static final List<String> values = Collections.synchronizedList(new ArrayList<>());
     private static final List<String> symbols = Collections.synchronizedList(new ArrayList<>());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
 
         Thread reader = new Thread(() -> {
@@ -47,18 +47,10 @@ public class AddElementsInLists {
         thread1.start();
         thread2.start();
 
-        try {
-            reader.join();
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        reader.join();
+        thread1.join();
+        thread2.join();
 
-
-        List<Double> doubles = Calculate.converter(values);  // здесь выкидываются 2 исключения минимум, намбэр формат и нул поинтер
-         //result = Calculate.operation(doubles, symbols, result);
-         System.out.println(result);
     }
 
 
