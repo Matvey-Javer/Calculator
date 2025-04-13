@@ -18,7 +18,8 @@ public class Variant1 {
         System.out.println(Arrays.toString(strings));
         doubles = converter(strings);
         System.out.println(doubles);
-        operation(symbols, doubles);
+        result = operation(symbols, doubles);
+        System.out.println(result);
     }
 
     public static List<Double> converter(String[] strings) {
@@ -29,26 +30,45 @@ public class Variant1 {
         return doubles;
     }
 
-    public static void operation(String[] symbols, List<Double> doubles) {
-        int size = Math.min(symbols.length, doubles.size());
-        for (int i = 1; i < size; i++) {
-            String op = symbols[i];
-            Double counter = 0.0;
-            Double result;
-
-            if (symbols[i].equals("+")) {
-                result = doubles.get(i - 1) + doubles.get(i);
-            } else if (symbols[i].equals("-")) {
-                result = doubles.get(i - 1) - doubles.get(i);
-            } else if (symbols[i].equals("*")) {
-                result = doubles.get(i - 1) * doubles.get(i);
-            } else if (symbols[i].equals("/")) {
-                result = doubles.get(i - 1) / doubles.get(i);
-            } else {
-                System.out.println("Invalid operator: " + op);
-                continue;
-            }
-            System.out.println("Result " + i + ": " + doubles.get(i-1) + " " + op + " " + doubles.get(i) + " = " + result);
+    public static Double operation(String[] symbols, List<Double> values) {
+        Double result = 0.0;
+        int size1 = symbols.length;
+        int size2 = values.size();
+        result = operation(symbols, values);
+        if (size1 == 0 | size2 == 0) {
+            return result;
         }
+        for (int i = 1; i < symbols.length; i++) {
+            switch (symbols[i]) {
+                case "+" -> {
+                    result = result + values.get(i - 1);
+                    size1--;
+                    size2--;
+                }
+                case "-" -> {
+                    result = result - values.get(i - 1);
+                    size1--;
+                    size2--;
+                }
+                case "*" -> {
+                    result = result * values.get(i - 1);
+                    size1--;
+                    size2--;
+                }
+                case "/" -> {
+                    result = result / values.get(i - 1);
+                    size1--;
+                    size2--;
+                }
+                default -> {
+                    System.out.println("Invalid operator: " + symbols[i]);
+                    continue;
+                    //System.out.println("Result " + ": " + i + " " + symbols[i] + " " + values.get(i) + " = " + result);
+                }
+            }
+            size1--;
+            size2--;
+        }
+        return result;
     }
 }
