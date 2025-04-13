@@ -18,8 +18,7 @@ public class Variant1 {
         System.out.println(Arrays.toString(strings));
         doubles = converter(strings);
         System.out.println(doubles);
-        result = operation(symbols, doubles, result);
-        System.out.println(result);
+        operation(symbols, doubles);
     }
 
     public static List<Double> converter(String[] strings) {
@@ -30,18 +29,26 @@ public class Variant1 {
         return doubles;
     }
 
-    public static Double operation(String[] symbols, List<Double> doubles, Double result) {
-        for (int i = 0; i < symbols.length; i++) {
+    public static void operation(String[] symbols, List<Double> doubles) {
+        int size = Math.min(symbols.length, doubles.size());
+        for (int i = 1; i < size; i++) {
+            String op = symbols[i];
+            Double counter = 0.0;
+            Double result;
+
             if (symbols[i].equals("+")) {
-                result = result + doubles.get(i);
+                result = doubles.get(i - 1) + doubles.get(i);
             } else if (symbols[i].equals("-")) {
-                result = result + doubles.get(i);
+                result = doubles.get(i - 1) - doubles.get(i);
             } else if (symbols[i].equals("*")) {
-                result = result * doubles.get(i);
+                result = doubles.get(i - 1) * doubles.get(i);
             } else if (symbols[i].equals("/")) {
-                result = result / doubles.get(i);
+                result = doubles.get(i - 1) / doubles.get(i);
+            } else {
+                System.out.println("Invalid operator: " + op);
+                continue;
             }
+            System.out.println("Result " + i + ": " + doubles.get(i-1) + " " + op + " " + doubles.get(i) + " = " + result);
         }
-        return result;
     }
 }
