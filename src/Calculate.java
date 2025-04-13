@@ -27,38 +27,25 @@ public class Calculate {
         return a / b;
     }
 
-    public static Double operation(List<Double> doubles1, List<Double> doubles2, List<String> symbols, Double result) {
-        Double a = 0.0;
-        Double b = 0.0;
-        for (int i = 0; i < doubles1.size(); i++) {
-            a = doubles1.get(i);
-            for (int j = 0; j < doubles2.size(); j++) {
-                b = doubles2.get(j);
-                if (symbols.get(i).equals("+")) {
-                    result = Calculate.addition(a, b);
-                } else if (symbols.get(i).equals("-")) {
-                    result = Calculate.subtraction(a, b);
+    public static void operation(List<Double> list1, List<Double> list2, List<String> symbols) {
+        int size = Math.min(list1.size(), Math.min(list2.size(), symbols.size()));
+        for (int i = 0; i < size; i++) {
+            Double a = list1.get(i);
+            Double b = list2.get(i);
+            String op = symbols.get(i);
+            Double result;
+
+            switch (op) {
+                case "+" -> result = addition(a, b);
+                case "-" -> result = subtraction(a, b);
+                case "*" -> result = multiplication(a, b);
+                case "/" -> result = division(a, b);
+                default -> {
+                    System.out.println("Invalid operator: " + op);
+                    continue;
                 }
             }
+            System.out.println("Result " + i + ": " + a + " " + op + " " + b + " = " + result);
         }
-        return result;
-    }
-
-    public static void main(String[] args) {
-        Double result = 0.0;
-        List<Double> doubles = new ArrayList<>();
-        List<Double> doubles2 = new ArrayList<>();
-        doubles.add(33.0);
-        doubles2.add(17.0);
-        doubles.add(50.0);
-        doubles2.add(50.0);
-        doubles.add(50.0);
-
-        List<String> symbols = new ArrayList<>();
-        symbols.add("+");
-        symbols.add("+");
-        symbols.add("-");
-        symbols.add("-");
-        System.out.println(operation(doubles, doubles2, symbols, result));
     }
 }

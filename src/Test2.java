@@ -42,7 +42,6 @@ public class Test2 {
             }
         });
 
-        // Each worker reads only from its own queue
         Thread worker1 = new Thread(() -> process(q1, firstValues, "1st"));
         Thread workerS = new Thread(() -> process(qs, symbols, "Symbol"));
         Thread worker2 = new Thread(() -> process(q2, secondValues, "2nd"));
@@ -56,6 +55,12 @@ public class Test2 {
         worker1.join();
         workerS.join();
         worker2.join();
+
+        List<Double> doubles1 = Calculate.converter(firstValues);
+        List<Double> doubles2 = Calculate.converter(secondValues);
+        Calculate.operation(doubles1, doubles2, symbols);
+
+
     }
 
     private static void process(BlockingQueue<String> queue, List<String> list, String name) {
