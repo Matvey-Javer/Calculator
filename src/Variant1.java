@@ -52,6 +52,8 @@ public class Variant1 {
         System.out.println(result);
     }
 
+    // подумай как тебе расставить приоритеты операция
+
     public static Double addition(Double a, Double b) {
         return a + b;
     }
