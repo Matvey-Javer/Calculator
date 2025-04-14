@@ -1,4 +1,5 @@
-/*
+package CalculateWithMultithreading;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,11 +28,11 @@ public class Test {
             }else {
 
 
-                Thread thread1 = new Thread(() -> AddElementsInLists.addingForFirstList( scanner1, firstValues));
+                Thread thread1 = new Thread(() -> CalculateWithMultithreading.Calculate.AddElementsInLists.addingForFirstList( scanner1, firstValues));
 
-                Thread thread2 = new Thread(() -> AddElementsInLists.addingForSymbolsList1(scanner2, symbols));
+                Thread thread2 = new Thread(() -> CalculateWithMultithreading.Calculate.AddElementsInLists.addingForSymbolsList1(scanner2, symbols));
 
-                Thread thread3 = new Thread(() -> AddElementsInLists.addingForSecondList(scanner3, secondValues));
+                Thread thread3 = new Thread(() -> CalculateWithMultithreading.Calculate.AddElementsInLists.addingForSecondList(scanner3, secondValues));
 
                 thread1.start();
                 thread2.start();
@@ -44,4 +45,3 @@ public class Test {
         }
     }
 }
-*/

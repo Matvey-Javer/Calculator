@@ -1,3 +1,5 @@
+package CalculateWithMultithreading;
+
 public class Menu {
     public static void getMenu(){
         System.out.println("This is console calculate");
