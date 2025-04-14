@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 // первое это подумай про () и прочее в калькуляторе.
 // второе это подумай про то, как игнорировать white-space символы, которые могут встречатся при вводе и прочее
@@ -17,7 +20,7 @@ public class Variant1 {
         System.out.println(Arrays.toString(strings));
         doubles = converter(strings);
         System.out.println(doubles);
-        operation(symbols, doubles);
+        operation(symbols, doubles, result);
     }
 
     public static List<Double> converter(String[] strings) {
@@ -28,29 +31,25 @@ public class Variant1 {
         return doubles;
     }
 
-    public static void operation(String[] symbols, List<Double> doubles) {
+    public static void operation(String[] symbols, List<Double> doubles, Double result) {
         int size = Math.min(symbols.length, doubles.size());
         for (int i = 1; i < size; i++) {
-            Double a = doubles.get(i - 1);
+            //Double a = doubles.get(i - 1);
+            result = doubles.getFirst();
+            Double b = doubles.get(i);
             String op = symbols[i];
-            Double result = 0.0;
-            if (symbols[i].equals("=")) {
-                break;
-            } else {
-                switch (op) {
-                    case "+" -> result = addition(result, a);
-                    case "-" -> result = subtraction(result, a);
-                    case "*" -> result = multiplication(result, a);
-                    case "/" -> result = division(result, a);
-                    default -> {
-                        System.out.println("Invalid operator: " + op);
-                        continue;
-                    }
+            switch (op) {
+                case "+" -> result = addition(result, b);
+                case "-" -> result = subtraction(result, b);
+                case "*" -> result = multiplication(result, b);
+                case "/" -> result = division(result, b);
+                default -> {
+                    System.out.println("Invalid operator: " + op);
+                    continue;
                 }
-               // result = operation(symbols, doubles);
             }
-            System.out.println("Result " + i + ": " + result + " " + op + " " + a + " = " + result);
         }
+        System.out.println(result);
     }
 
     public static Double addition(Double a, Double b) {
