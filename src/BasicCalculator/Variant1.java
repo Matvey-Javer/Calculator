@@ -36,19 +36,20 @@ public class Variant1 {
     public static void operation(String[] symbols, List<Double> doubles, Double result) {
         int size = Math.min(symbols.length, doubles.size());
         for (int i = 1; i < size; i++) {
-            //Double a = doubles.get(i - 1);
             result = doubles.getFirst();
-            Double b = doubles.get(i);
+            Double value = doubles.get(i);
             String op = symbols[i];
-            switch (op) {
-                case "+" -> result = addition(result, b);
-                case "-" -> result = subtraction(result, b);
-                case "*" -> result = multiplication(result, b);
-                case "/" -> result = division(result, b);
-                default -> {
-                    System.out.println("Invalid operator: " + op);
-                    continue;
-                }
+            if (op.equals("+")) {
+                result = addition(result, value);
+            } else if (op.equals("-")) {
+                result = subtraction(result, value);
+            } else if (op.equals("*")) {
+                result = multiplication(result, value);
+            } else if (op.equals("/")) {
+                result = division(result, value);
+            } else {
+                System.out.println("Invalid operator: " + op);
+                continue;
             }
         }
         System.out.println(result);
